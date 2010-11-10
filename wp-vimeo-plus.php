@@ -2,7 +2,7 @@
 /*
 Plugin Name: Vimeo Plus
 Plugin URI: #
-Description: Adds a shortag for Vimeo Plus videos (Plus accounts only).
+Description: Adds a shortag for Vimeo Plus videos (Plus accounts only). Requires the NerdyIsBack Plugin Framework.
 Version: 0.1
 Author: David Beveridge
 Author URI: http://www.nerdyisback.com
@@ -31,22 +31,6 @@ License: MIT
 
 // Create Options pages:
 
-
-require_once('CustomOptionsPage.php');
-
-/*<iframe src="http://player.vimeo.com/video/16573114?
- * title=0&amp;
- * byline=0&amp;
- * portrait=0&amp;
- * color=A0CE67" width="620" height="344" frameborder="0"></iframe>*/
-
-/*
- * byline (optional) Show the byline on the video. Defaults to true.
-   title (optional) Show the title on the video. Defaults to true.
-   portrait (optional) Show the user's portrait on the video. Defaults to true.
-   color (optional) Specify the color of the video controls.
-   autoplay (optional) Automatically start playback of the video. Defaults to false.
- */
 
 $fields = array();
 $fields[] = array('type'=>'heading','name'=>'Player Dimensions:');
@@ -82,35 +66,35 @@ function vimeo_plus_shorttag($atts,$content=null,$code=null)	{
 	extract(shortcode_atts($defaults,$atts));
 	$args = array();
 
-	if($dbyline = $vimeoPlusOpts->getOption('disableByline') && !empty($dbyline))	{
+	if(($dbyline = $vimeoPlusOpts->getOption('disableByline')) && !empty($dbyline))	{
 		$args['byline'] = 0;
 	}
 	else	{
 		$args['byline'] = 1;
 	}
 	
-	if($dportrait = $vimeoPlusOpts->getOption('disablePortrait') && !empty($dportrait))	{
+	if(($dportrait = $vimeoPlusOpts->getOption('disablePortrait')) && !empty($dportrait))	{
 		$args['portrait'] = 0;
 	}
 	else	{
 		$args['portrait'] = 1;
 	}
 	
-	if($dtitle = $vimeoPlusOpts->getOption('disableTitle') && !empty($dtitle))	{
+	if(($dtitle = $vimeoPlusOpts->getOption('disableTitle')) && !empty($dtitle))	{
 		$args['title'] = 0;
 	}
 	else	{
 		$args['title'] = 1;
 	}
 	
-	if($autoplay = $vimeoPlusOpts->getOption('autoPlay') && !empty($autoplay))	{
+	if(($autoplay = $vimeoPlusOpts->getOption('autoPlay')) && !empty($autoplay))	{
 		$args['autoplay'] = 1;
 	}
 	else	{
 		$args['autoplay'] = 0;
 	}
 	
-	if($color = $vimeoPlusOpts->getOption('playerColor') && $color !== '')	{
+	if(($color = $vimeoPlusOpts->getOption('playerColor')) && $color !== '')	{
 		$args['color'] = str_replace('#','',$color);
 	}
 
