@@ -47,7 +47,7 @@ $fields[] = array('id' => 'autoPlay','name'=>'Enable Autoplay','desc' => 'Whethe
 $fields[] = array('id' => 'playerColor','name'=>'Player Color','desc' => 'Hexidecimal color code.  Defaults to blue.', 'type'=>'text');
 
 
-$vimeoPlusOpts = new CustomOptionspage('options','vimeoplusst','Vimeo Plus','manage_options',$fields);
+$vimeoPlusOpts = new CustomOptionsPage('options','vimeoplusst','Vimeo Plus','manage_options',$fields);
 
 function vimeo_plus_shorttag($atts,$content=null,$code=null)	{
 	global $vimeoPlusOpts;
